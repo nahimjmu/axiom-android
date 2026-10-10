@@ -16,4 +16,5 @@ jobs:
           SITE: ${{ vars.SITE_URL }}
         run: |
           if [ -z "$SITE" ]; then echo "Set the SITE_URL repository variable first"; exit 0; fi
-          curl -fsS --retry 2 --max-time 120 "$SITE/v1/health" && echo
+          # a miss is logged, not failed: a failure here would email you every 10 minutes
+          curl -fsS --retry 2 --max-time 120 "$SITE/v1/health" && echo || echo "::warning::$SITE did not answer"
