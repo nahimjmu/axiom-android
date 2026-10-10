@@ -1,0 +1,10 @@
+{
+  "version_code": 1001,
+  "version_name": "1.0.1",
+  "apk_url": "https://nahimjmu.github.io/axiom-android/axiom.apk",
+  "apk_bytes": 2824897,
+  "apk_sha256": "8a44738736d7f0285b71e2d342639d8114576e14820d5b099c57d3949a6d0f77",
+  "server_url": "https://axiom-tinyscholars.onrender.com",
+  "notes": "Free beta hosting (Render + Neon), Tiny Scholars, and the Android app with auto-updates",
+  "published_at": "2026-10-10T20:25:46+00:00"
+}
