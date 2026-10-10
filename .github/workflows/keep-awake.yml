@@ -1,0 +1,19 @@
+# The free host (Render) sleeps after 15 idle minutes and takes about a minute to wake.
+# During school hours, 06:30–19:30 IST (01:00–13:59 UTC), Monday to Saturday, ping it every
+# 10 minutes. /v1/health doesn't touch the database, so the free database still sleeps.
+name: keep-awake
+on:
+  schedule:
+    - cron: '*/10 1-13 * * 1-6'
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Ping the school site
+        env:
+          SITE: ${{ vars.SITE_URL }}
+        run: |
+          if [ -z "$SITE" ]; then echo "Set the SITE_URL repository variable first"; exit 0; fi
+          curl -fsS --retry 2 --max-time 120 "$SITE/v1/health" && echo
